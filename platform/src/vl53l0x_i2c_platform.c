@@ -289,9 +289,9 @@ int32_t VL53L0X_write_dword(uint8_t address, uint8_t index, uint32_t  data)
         uint8_t buffer[5]; /* Addr + data */
         buffer[0] = index;
         buffer[1] = data >> 24;
-        buffer[1] = data >> 16;
-        buffer[1] = data >> 8;
-        buffer[1] = data;
+        buffer[2] = data >> 16;
+        buffer[3] = data >> 8;
+        buffer[4] = data;
         ret = nrf_drv_twi_tx(&m_twi_master, address >> 1, buffer, 2, false);
     }while (0);
 
